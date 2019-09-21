@@ -10,7 +10,6 @@ function maxChar(str) {
   let max = 0;
 
   str.split('').forEach(char => {
-    if (!char) return;
     if (map[char]) {
       map[char]++;
     } else {

@@ -13,4 +13,4 @@ function reverse(str) {
     .join('');
 }
 
-module.exports = reverse;
+export default reverse;
