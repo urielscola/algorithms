@@ -18,14 +18,10 @@
 //       '####'
 
 function steps(n) {
-  const arr = new Array(n);
+  const arr = new Array(n).fill(' ');
   for (let index = 0; index < n; index++) {
-    let step = '';
     arr[index] = '#';
-    for (let nestedIndex = 0; nestedIndex < n; nestedIndex++) {
-      step += arr[nestedIndex] || ' ';
-    }
-    console.log(step);
+    console.log(arr.join(''));
   }
 }
 
