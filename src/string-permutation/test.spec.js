@@ -21,3 +21,7 @@ test('returns false if empty string is provided', () => {
   expect(isPermutation('hi', '')).toBe(false);
   expect(isPermutation('', '')).toBe(false);
 });
+
+test('returns false sum of ASCII values are the same, but string is not permutable', () => {
+  expect(isPermutation('ac', 'bb')).toBe(false);
+});

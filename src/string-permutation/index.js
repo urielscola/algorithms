@@ -2,22 +2,38 @@
 *  Given two strings, write a method to decide if one is a permutation of the other. 
 */
 
-// O (2N)
+// O (N + n log N) === O(N)
 
 const isPermutation = (string1, string2) => {
   if (!string1 || !string2) return false;
+  if (string1.length !== string2.length) return false;
   if (string1 === string2) return true;
 
-  let sum1 = 0, sum2 = 0;
-  for (let index in string1) {
-    sum1 += (string1.charAt(index)).charCodeAt();
+  const characterMap = {};
+
+  for (let i = 0; i < string1.length; i++) {
+    const character = string1.charAt(i).toLowerCase();
+
+    if (characterMap[character]) {
+      characterMap[character]++
+    } else {
+      characterMap[character] = 1;
+    }
   }
 
-  for (let index in string2) {
-    sum2 += (string2.charAt(index)).charCodeAt();
+  for (let i = 0; i < string2.length; i++) {
+    const character = string2.charAt(i).toLowerCase();
+
+    if (!characterMap[character]) break;
+
+    characterMap[character]--;
+    if (characterMap[character] < 1) {
+      delete characterMap[character];
+    }
+    
   }
 
-  return sum1 === sum2;
+  return Object.keys(characterMap).length === 0;
 };
 
 export default isPermutation;
